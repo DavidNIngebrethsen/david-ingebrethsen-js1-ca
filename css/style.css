@@ -24,7 +24,10 @@ img {
     text-align: center;
     flex-direction: column;
     border: 1px solid navy;
-    background-color: lightblue;
+    background-color: aquamarine;
     width: 15rem;
     border-radius: 0.5rem;
+}
+.entry:hover {
+    background-color: aqua;
 }
