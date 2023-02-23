@@ -1,21 +1,35 @@
 console.log("Details script is running")
 
 const url = "https://www.fishwatch.gov/api/species/"
+const log = document.querySelector("#log")
 const output = document.querySelector("#content")
 
 async function getItem() {
+    animation.style.display = "block"
     const link = new URLSearchParams(window.location.search)
     const response = await fetch(url + link.get("fish"))
     const data = await response.json()
     console.log(data)
-    if (data[0]) {
-        printItem(data[0])
-    } else {
-        const error = document.createElement("h1")
-        error.innerText = "Error, data not found"
-        error.style.color = "firebrick"
-        output.append(error)
-    }
+    console.log(link)
+    setTimeout(() => {
+        if (data[0]) {
+            printItem(data[0])
+        } else {
+            const error = document.createElement("h1")
+            error.innerText = "Error, data not found"
+            error.style.color = "firebrick"
+            output.append(error)
+            if (window.location.search.includes("-farmed")) {
+                let altLink = window.location.search.replace("-farmed", "")
+                const alternative = document.createElement("a")
+                alternative.innerText = "Try instead: " + altLink
+                alternative.href = altLink
+                log.append(alternative)
+                log.style.display = "block"
+            }
+        }
+        animation.style.display = "none"
+    }, 500);
     
 }
 getItem()

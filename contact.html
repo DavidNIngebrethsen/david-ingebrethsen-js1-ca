@@ -11,18 +11,33 @@
 </head>
 <body>
     <a href="index.html">Back</a>
+    <div class="situational" id="output"></div>
     <div class="container" id="contact">
-        <form action="">
-            <label for="name">Name:</label>
-            <input type="text" id="name-field" name="name">
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject-field" name="subject">
-            <label for="email">E-mail:</label>
-            <input type="text" id="email-field" name="email">
-            <label for="adress">Address:</label>
-            <input type="text" id="address-field" name="address">
-
-            <input type="submit" id="submit-button" disabled>
+        <form action="" id="submission-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name-field" name="name">
+                <div class="situational" id="name-log"></div>
+            </div>
+            <div>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject-field" name="subject">
+                <div class="situational" id="subject-log"></div>
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="text" id="email-field" name="email">
+                <div class="situational" id="email-log"></div>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address-field" name="address">
+                <div class="situational" id="address-log"></div>
+            </div>
+            <div>
+                <input type="submit">
+                <div class="situational" id="submit-log"></div>
+            </div>
         </form>
     </div>
 </body>

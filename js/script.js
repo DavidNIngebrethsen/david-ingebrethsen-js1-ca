@@ -4,6 +4,7 @@ const url = "https://www.fishwatch.gov/api/species"
 const input = document.querySelector("#input")
 const log = document.querySelector("#log")
 const output = document.querySelector("#output")
+const animation = document.querySelector("#animation")
 
 const buttonSize5 = document.querySelector("#page-size-5")
 const buttonSize10 = document.querySelector("#page-size-10")
@@ -61,26 +62,34 @@ function clearList() {
 }
 
 function printList(array) {
+    animation.style.display = "block"
     clearList()
     for (let i = resultOffset; i < array.length; i++) {
         if (i >= resultOffset + pageLength) {
             break
         }
-        const element = document.createElement("a")
-        const header = document.createElement("h2")
-        const picture = document.createElement("img")
-        const content = document.createElement("p")
-        header.innerText = array[i]["Species Name"]
-        content.innerText = array[i]["Scientific Name"]
-        picture.src = array[i]["Species Illustration Photo"].src
-        picture.alt = array[i]["Species Illustration Photo"].alt
-        picture.title = array[i]["Species Illustration Photo"].title
-        element.append(header, picture, content)
-        element.classList.add("entry")
-        element.href = "details.html" + "?fish=" + array[i]["Path"].slice(10)
-        output.append(element)
-        console.log(array[i]["Path"].slice(10))
+        setTimeout(() => {
+            printItem(array[i])
+            animation.style.display = "none"
+        }, 500);
     }
     output.style.display = "flex"
+}
 
+function printItem(item) {
+    const element = document.createElement("a")
+    const header = document.createElement("h2")
+    const picture = document.createElement("img")
+    const content = document.createElement("p")
+
+    header.innerText = item["Species Name"]
+    content.innerText = item["Scientific Name"]
+    picture.src = item["Species Illustration Photo"].src
+    picture.alt = item["Species Illustration Photo"].alt
+    picture.title = item["Species Illustration Photo"].title
+
+    element.append(header, picture, content)
+    element.classList.add("entry")
+    element.href = "details.html" + "?fish=" + item["Path"].slice(10)
+    output.append(element)
 }

@@ -1,13 +1,22 @@
 body {
-    background-color: skyblue;
+    padding: 1rem;
+    background-color: lightcyan;
+    
 }
 img {
     max-width: 12rem;
     max-height: 12rem;
 }
+input {
+    min-width: 12rem;
+}
+#address-field {
+    width: 25rem;
+}
 
 .container {
     border: 1px solid navy;
+    background-color: skyblue;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -16,6 +25,7 @@ img {
 }
 .situational {
     display: none;
+    text-align: center;
 }
 .entry {
     display: flex;
@@ -30,4 +40,28 @@ img {
 }
 .entry:hover {
     background-color: aqua;
+}
+
+.buffer-container {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+}
+.buffer-object {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    border: 1rem solid gray;
+    border-top: 1rem solid coral;
+    animation: buffer-spin 1s linear infinite;
+}
+@keyframes buffer-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
