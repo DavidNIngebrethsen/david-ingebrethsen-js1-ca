@@ -49,4 +49,6 @@ function printItem(array) {
     information.innerHTML = array["Biology"]
     element.append(title, latinName, picture, information)
     output.append(element)
+
+    document.title = document.title.replace("Details", array["Species Name"])
 }
