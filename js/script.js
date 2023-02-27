@@ -14,6 +14,29 @@ const buttonPageNext = document.querySelector("#next-page")
 
 let pageLength = 10
 let resultOffset = 0
+let library = []
+let results = 0
+
+getList()
+async function getList() {
+    animation.style.display = "block"
+    try {
+        const response = await fetch(url)
+        const data = await response.json()
+        console.log(data)
+        library = data
+        results = data.length
+        setTimeout(() => {
+            animation.style.display = "none"
+        }, 500);
+    } catch (error) {
+        element = document.createElement("h3")
+        element.innerText = "Failed to fetch from API, please refresh to try again."
+    }
+}
+
+const pageNumber = document.querySelector("#page-number")
+const lastPageNumber = document.querySelector("#last-page-number")
 
 buttonSize5.addEventListener("click", () => sizeButtonCycle(5))
 buttonSize10.addEventListener("click", () => sizeButtonCycle(10))
@@ -40,21 +63,17 @@ function sizeButtonCycle(select) {
 
 function firstPage() {
     resultOffset = 0
-    getList()
+    pageNumber.innerText = 1
+    lastPageNumber.innerText = Math.ceil(results/pageLength)
+    printList(library)
 }
 
 function nextPage() {
     resultOffset += pageLength
-    getList()
-}
-
-
-
-async function getList() {
-    const response = await fetch(url)
-    const data = await response.json()
-    console.log(data)
-    printList(data)
+    let currentPage = parseInt(pageNumber.innerText)
+    currentPage += 1
+    pageNumber.innerText = currentPage
+    printList(library)
 }
 
 function clearList() {
@@ -64,8 +83,9 @@ function clearList() {
 function printList(array) {
     animation.style.display = "block"
     clearList()
-    for (let i = resultOffset; i < array.length; i++) {
-        if (i >= resultOffset + pageLength) {
+    for (let i = resultOffset; i < resultOffset + pageLength; i++) {
+        if (i >= array.length) {
+            buttonPageNext.disabled = true
             break
         }
         setTimeout(() => {

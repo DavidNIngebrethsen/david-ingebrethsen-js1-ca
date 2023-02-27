@@ -12,20 +12,26 @@
 </head>
 <body>
     <div class="container" id="input">
-        <div class="container">
+        <fieldset class="container">
+            <legend>Results per Page</legend>
             <button class="search" id="page-size-5">5</button>
             <button class="search" id="page-size-10">10</button>
             <button class="search" id="page-size-20">20</button>
-        </div>
+        </fieldset>
         <div class="container">
             <button class="search" id="first-page" disabled>First Page</button>
+            <fieldset>
+                <legend>Page:</legend>
+                <p><span id="page-number">0</span> / <span id="last-page-number">0</span></p>
+            </fieldset>
             <button class="search" id="next-page" disabled>Next Page</button>
         </div>
+        <div class="spacer"></div>
         <a href="contact.html"><h3>Contact</h3></a>
 
     </div>
-    <div class="feedback" id="log"></div>
-    <div class="container feedback" id="output"></div>
+    <div class="situational" id="log"></div>
+    <div class="container situational error" id="output"></div>
     <div class="buffer-container" id="animation">
         <div class="buffer-object"></div>
     </div>

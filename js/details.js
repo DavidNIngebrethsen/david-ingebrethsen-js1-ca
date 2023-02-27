@@ -17,7 +17,7 @@ async function getItem() {
         } else {
             const error = document.createElement("h1")
             error.innerText = "Error, data not found"
-            error.style.color = "firebrick"
+            error.classList.add("error")
             output.append(error)
             if (window.location.search.includes("-farmed")) {
                 let altLink = window.location.search.replace("-farmed", "")

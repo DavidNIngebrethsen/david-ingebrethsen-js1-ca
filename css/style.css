@@ -1,5 +1,5 @@
 body {
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: lightcyan;
     
 }
@@ -10,6 +10,12 @@ img {
 input {
     min-width: 12rem;
 }
+p {
+    margin: 0.25rem;
+}
+button {
+    padding: 0.5rem 1.5rem;
+}
 #address-field {
     width: 25rem;
 }
@@ -18,14 +24,20 @@ input {
     border: 1px solid navy;
     background-color: skyblue;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 1rem;
-    gap: 0.5rem;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.spacer {
+    width: 10rem;
 }
 .situational {
     display: none;
     text-align: center;
+}
+.error {
+    color: red;
 }
 .entry {
     display: flex;
@@ -34,9 +46,10 @@ input {
     text-align: center;
     flex-direction: column;
     border: 1px solid navy;
-    background-color: aquamarine;
+    background-color: lightblue;
     width: 15rem;
     border-radius: 0.5rem;
+    transition: 300ms;
 }
 .entry:hover {
     background-color: aqua;
