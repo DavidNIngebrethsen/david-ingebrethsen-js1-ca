@@ -32,6 +32,8 @@ async function getList() {
     } catch (error) {
         element = document.createElement("h3")
         element.innerText = "Failed to fetch from API, please refresh to try again."
+        log.append(element)
+        log.style.display.block
         setTimeout(() => {
             animation.style.display = "none"
         }, 500);
